@@ -11,11 +11,12 @@ with open('data.csv', newline='') as csvfile:
         accession=row[2]
         try:
             net_handle = Entrez.efetch(db="nucleotide",id=accession,rettype="fasta",retmode="text")
-            out_handle = open(filename,"a")
+            out_handle = open("data/"+filename,"a")
             out_handle.write(net_handle.read())
             out_handle.close()
             net_handle.close()
             print("Saved!")
         except:
+            print(accession)
             continue
         
