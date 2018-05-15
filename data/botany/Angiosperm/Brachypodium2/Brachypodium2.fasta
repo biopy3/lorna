@@ -1,0 +1,40 @@
+LOCUS       Brachypodium_pinnatum_KX167503       624 bp
+DEFINITION  Brachypodium_pinnatum_KX167503     624 bp
+TITLE       Brachypodium_pinnatum_KX167503
+ORIGIN
+
+        1 ACACGCTCCC ACCCCCCCTC GTGGGG-AGC AGGACGCGGC TTATGGCTCC CCGTGCCTTT
+       61 GGGCGCGGTT GGCCGAAGAT CGGGCTGCCG GCGTA--TCG TGCCGGG-CA CAGCGCGTGG
+      121 TGGGCGATCT CGCTTTA-CT CAGCGCAGCG CTGCGGGTGC GTAGCCGGTG TAATGGCCTC
+      181 CA-AGGACCC CCAAAAACGG AGTGCGCGTC GCTCCGACCG CGACCCCAGG TCAGGCGGGA
+      241 CTACCCGCTG AGTTTAAGCA TATAAATAAG CGGAGGAGAA GAAACTTACA AGGAT--TCC
+      301 CCTAGTAACG GCGAGCGAAC CGGGAGCAGC CCAGCTTGAG AATCGGGCGG CCGTGCCGTC
+      361 CGA------- ---------- ---------- ---------- ---------- ----------
+      421 ---------- ---------- ---------- ---------- ---------- ----------
+      481 ---------- ---------- ---------- ---------- ---------- ----------
+      541 ---------- ---------- ---------- ---------- ---------- ----------
+      601 ---------- ---------- ----
+//
+LOCUS       Brachypodium_sylvaticum_KX165765       624 bp
+DEFINITION  Brachypodium_sylvaticum_KX165765     624 bp
+TITLE       Brachypodium_sylvaticum_KX165765
+ORIGIN
+
+        1 ACACGCTCCC ACCCCCCCTC GTGGGG-AGC AGGACGCGGC CTATGGCTCC CCGTGCCTTT
+       61 GGGCGCGGTT GGCCGAAGAT CGGGCTGCCG GCGTA--TCG TGCCGGG-CA CAGCGCGTGG
+      121 TGGGCGATCT CGCTTTA-CT CAGCGCAGCG CTGCGGGTGC GTAGCCGGTG TAATGGCCTC
+      181 CA-AGGACCC CCAAAAACGG AGTGCGCGTC GCTCCGACCG CGACCCCAGG TCAGGCGGGA
+      241 CTACCCGCTG AGTTTAAGCA TATAAATAAG CGGAGGAGAA GAAACTTACA AGGAT--TCC
+      301 CCTAGTAACG GCGAGCGAAC CGGGAGCAGC CCAGCTTGAG AATCGGGCGG CCGTGCCGTC
+      361 CGA------- ---------- ---------- ---------- ---------- ----------
+      421 ---------- ---------- ---------- ---------- ---------- ----------
+      481 ---------- ---------- ---------- ---------- ---------- ----------
+      541 ---------- ---------- ---------- ---------- ---------- ----------
+      601 ---------- ---------- ----
+//
+LOCUS       Brachypodium_boissieri_KP987446       0 bp
+DEFINITION  Brachypodium_boissieri_KP987446     0 bp
+TITLE       Brachypodium_boissieri_KP987446
+ORIGIN
+
+//
