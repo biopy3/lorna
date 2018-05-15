@@ -1,5 +1,7 @@
 import os,shutil
 
+input_dir = input("Please put in dir:").strip().strip('\'')
+
 def handle_fasta_file(input_dir):
     li =[]
     for dirpath,dirnames,filenames in os.walk(input_dir):
@@ -9,7 +11,7 @@ def handle_fasta_file(input_dir):
                 li.append(os.path.join(dirpath,filename))
     return li
 
-li = handle_fasta_file("./SSP")
+li = handle_fasta_file(input_dir)
 for i in li:
     os.mkdir(os.path.splitext(i)[0])
     shutil.move(i,os.path.splitext(i)[0])
