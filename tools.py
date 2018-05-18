@@ -1,19 +1,25 @@
 import os,shutil,csv,subprocess
 from Bio import SeqIO
 from Bio import Entrez
+import re
 
 def inputdir():
 	return input("Please put in dir:").strip().strip('\'')
 
-def gettypefile(inputdir=inputdir(),types=[]):
+def getfile(inputdir=inputdir(),patterns=[]):
     files =[]
-    for dirpath,dirnames,filenames in os.walk(inputdir):
-        for filename in filenames:
-            postfix = os.path.splitext(filename)[1]
-            for typ in types:
-                if postfix == '.'+typ:
-                    li.append(os.path.join(dirpath,filename))
+    for dirpath,dirnames,filenames in os.walk(inputdir): 
+        for pattern in patterns:
+            for filename in filenames:
+                status = re.search(pattern,filename,flags=0)
+                if status:
+                    files.append(os.path.join(dirpath,filename))
     return files
+
+def remove(files):
+    for file in files:
+        os.remove(file)
+    print("removed!")
 
 def underdir(files):
     for i in files:
@@ -31,14 +37,14 @@ def modifseqid(files):
             SeqIO.write(records,file,'fasta')
     print("Done!")
 
-def downloadseq(csvfiles=[],column_filname,column_accession):
+def downloadseq(csvfiles,column_filname,column_accession):
     Entrez.email = 'wr695251173@163.com'
     for csvf in csvfiles:
         with open(csvf, newline='') as csvfile:
             reader = csv.reader(csvfile)
             count = 1
             for row in reader:
-            filename=row[column_filename]
+                filename=row[column_filename]
                 accession=row[column_accession]
                 try:
                     net_handle = Entrez.efetch(db="nucleotide",id=accession,rettype="fasta",retmode="text")
@@ -53,24 +59,24 @@ def downloadseq(csvfiles=[],column_filname,column_accession):
                     continue
 def locarna(files):
     for input_file in files:
-	try:
-		output_dir = os.path.splitext(input_file)[0]
-		print(input_file)
-		ps = subprocess.Popen(["mlocarna",input_file,"--tgtdir",output_dir+"_results/","--write-structure"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-		output_lines = ps.stdout.readlines()
-		error_lines = ps.stderr.readlines()
-		f = open(output_dir+"_results/RNAalifold.txt","w")
-		for line in output_lines:
-			f.write(str(line,encoding = "utf-8"))
-		f.close()
-		f = open(output_dir+"_results/error_info.txt","w")
-		for line in error_lines:
-			f.write(str(line,encoding = "utf-8"))
-		f.close()
+	    try:
+		    output_dir = os.path.splitext(input_file)[0]
+		    print(input_file)
+		    ps = subprocess.Popen(["mlocarna",input_file,"--tgtdir",output_dir+"_results/","--write-structure"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+		    output_lines = ps.stdout.readlines()
+		    error_lines = ps.stderr.readlines()
+		    f = open(output_dir+"_results/RNAalifold.txt","w")
+		    for line in output_lines:
+			    f.write(str(line,encoding = "utf-8"))
+		    f.close()
+		    f = open(output_dir+"_results/error_info.txt","w")
+		    for line in error_lines:
+			    f.write(str(line,encoding = "utf-8"))
+		    f.close()
 
-	except:
-		print("The file is wrong:"+input_file)
-		continue
+	    except:
+		    print("The file is wrong:"+input_file)
+		    continue
 
 def solvedup(files):
     for fasfile in files:
@@ -93,6 +99,15 @@ def solvedup(files):
                 j = j+1
             i = i+1
         SeqIO.write(records,filename,"fasta")
+
+def clustalw(files):
+     for file_name in files:
+        try:
+            subprocess.call(["clustalw","-INFILE="+file_name,"-ALIGN","-QUIET","-OUTPUT=FASTA","-OUTFILE="+ os.path.splitext(file_name)[0]+'_aligned.fasta'])
+            os.remove(os.path.splitext(file_name)[0]+'.dnd')
+        except:
+            print("This file is wrong:"+file_name.split('/')[-1])
+            continue
 
 if __name__ == "__main__":
     pass
