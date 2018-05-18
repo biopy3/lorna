@@ -7,12 +7,25 @@ def inputdir():
 	return input("Please put in dir:").strip().strip('\'')
 
 def getfile(inputdir=inputdir(),patterns=[]):
-    files =[]
+    files = []
     for dirpath,dirnames,filenames in os.walk(inputdir): 
         for pattern in patterns:
             for filename in filenames:
                 status = re.search(pattern,filename,flags=0)
                 if status:
+                    files.append(os.path.join(dirpath,filename))
+    return files
+
+
+def getexceptfile(inputdir=inputdir(),patterns=[]):
+    files = []
+    for dirpath,dienames,filenames in os.walk(inputdir):
+        for pattern in patterns:
+            for filename in filenames:
+                status = re.search(pattern,filename,flags=0)
+                if status:
+                    pass
+                else:
                     files.append(os.path.join(dirpath,filename))
     return files
 
